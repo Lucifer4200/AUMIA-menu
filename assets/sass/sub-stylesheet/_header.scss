@@ -1,0 +1,289 @@
+
+//?==== mobile menu css start ====?//
+header {
+    .header-bg {
+        padding: 10px;
+        @extend %shadow;
+        position: relative;
+        background: $white-color;
+        .mobile-menu-item {
+            @extend %flex;
+            align-items: center;
+            justify-content: space-between;
+            .menu-bar {
+                .site-header__navigation {
+                    position: relative;
+                    transition: transform .15s ease-out;
+                    &:hover {
+                        .burger-icon {
+                            &.burger-icon--top {
+                                transform: translateY(-2px);
+                            }
+                            &.burger-icon--bottom {
+                                transform: translateY(2px);
+                            }
+                        }
+                    }
+                    &.btn--clear {
+                        position: relative;
+                        background-color: transparent;
+                        border: 0;
+                        color: #000;
+                        transition: .15s opacity ease-out;
+                        &.show_icon {
+                            .burger-icon--top {
+                                top: calc(50% - 1px);
+                                transform: rotate(45deg);
+                            }
+                            .burger-icon--mid {
+                                opacity: 0;
+                            }
+                            .burger-icon--bottom {
+                                top: calc(50% - 1px);
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
+                    &.btn--square {
+                        width: 50px;
+                        height: 50px;
+                        padding: 0;
+                        text-align: center;
+                        line-height: 50px;
+                    }
+                    &.btn-shopify {
+                        appearance: none;
+                        display: inline-block;
+                        position: relative;
+                        width: auto;
+                        border-radius: 0;
+                        color: #fff;
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        letter-spacing: 2px;
+                        text-decoration: none;
+                        text-align: center;
+                        text-transform: uppercase;
+                        padding: 10px 30px;
+                        line-height: 2.2;
+                        transition: outline .1s linear;
+                        &:focus {
+                            outline: 0;
+                        }
+                    }
+                    .burger-icon {
+                        display: block;
+                        height: 2px;
+                        width: 18px;
+                        left: 50%;
+                        margin-left: -9px;
+                        background: #000;
+                        position: absolute;
+                        transition: all .25s ease-out;
+                        @include breakpoint (md) {
+                            height: 2px;
+                            width: 24px;
+                            left: 50%;
+                            margin-left: -12px;
+                        }
+                        &.burger-icon--top {
+                            top: 17px;
+                            @include breakpoint (md) {
+                                top: 16px;
+                            }
+                        }
+                        &.burger-icon--mid {
+                            top: 24px;
+                        }
+                        &.burger-icon--bottom {
+                            top: 31px;
+                            @include breakpoint (md) {
+                                top: 32px;
+                            }
+                        }
+                    }
+                }
+            }
+            .menu-item {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #fff;
+                max-height: 0;
+                width: 100%;
+                text-align: center;
+                overflow-x: hidden;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                opacity: 0;
+                transition: opacity .25s ease-out;
+                pointer-events: none;
+                z-index: 5;
+                @extend %shadow;
+                &.active {
+                    top: 100%;
+                    min-height: 100vh;
+                    max-height: 100vh;
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+                .item-list {
+                    margin: 0;
+                    padding: 0;
+                    padding-top: 80px;
+                    list-style: none;
+                    text-align: center;
+                    li {
+                        &:nth-child(1) {
+                            a {
+                                transition-delay: .1s;
+                                transition-duration: .3s;
+                            }
+                        }
+                        &:nth-child(2) {
+                            a {
+                                transform: translateY(20px);
+                                transition-delay: .1s;
+                                transition-duration: .3s;
+                            }
+                        }
+                        &:nth-child(3) {
+                            a {
+                                transform: translateY(30px);
+                                transition-delay: .1s;
+                                transition-duration: .3s;
+                            }
+                        }
+                        &:nth-child(4) {
+                            a {
+                                transform: translateY(35px);
+                                transition-delay: .1s;
+                                transition-duration: .4s;
+                            }
+                        }
+                        &:nth-child(5) {
+                            a {
+                                transform: translateY(40px);
+                                transition-delay: .1s;
+                                transition-duration: .5s;
+                            }
+                        }
+                        &.fade_all {
+                            a {
+                                opacity: 1;
+                                transform: translateY(0);
+                            }
+                        }
+                        h2 {
+                            margin: 0;
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+                        a {
+                            color: #000;
+                            margin: 5px;
+                            padding: 5px;
+                            opacity: 0;
+                            font-size: 16px;
+                            text-decoration: none;
+                            font-weight: 500;
+                            position: relative;
+                            text-transform: uppercase;
+                            transform: translateY(20px);
+                            transition: all .3s ease-in-out;
+                            @include breakpoint (sm) {
+                                font-size: 18px;
+                            }
+                            &:hover {
+                                transform: translateY(-3px);
+                                &::after {
+                                    transform: scaleX(1.1);
+                                }
+                            }
+                            &::after {
+                                @extend %absolute;
+                                bottom: 0;
+                                left: 0;
+                                height: 2px;
+                                width: 100%;
+                                transform: scaleX(0);
+                                background: #000;
+                                transition: all 0.3s ease-in-out;
+                            }
+                            &.accordion-link  {
+                                &::before {
+                                    position: absolute;
+                                    top: 50%;
+                                    right: -15px;
+                                    content: '\f0de';
+                                    font-weight: 900;
+                                    font-family: 'Font Awesome 5 Free';
+                                    transform: translateY(-40%);
+                                }
+                                &.collapsed {
+                                    &::before {
+                                        content: '\f0dd';
+                                        transform: translateY(-65%);
+                                    }
+                                }
+                            }
+                          
+                        }
+                        .submenu {
+                            ul.submenu-list {
+                                padding: 0;
+                                margin: 0;
+                                list-style: none;
+                                li {
+                                    a {
+                                        margin: 3px 0;
+                                        padding: 3px 0;
+                                        text-decoration: none;
+                                        font-size: 14px;
+                                        text-transform: capitalize;
+                                        transform: translateY(0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.style-one {
+                        padding-top: 60px;
+                        li {
+                            a {
+                                font-size: 12px;
+                                font-weight: 400;
+                                color: #000;
+                                transform: translateY(0);
+                                text-transform: capitalize;
+                                &:hover {
+                                    opacity: .5;
+                                }
+                                &::after {
+                                    content: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .header-logo {
+                img {
+    
+                }
+            }
+            .header-icon {
+                button.cart-icon {
+                    height: 20px;
+                    width: 20px;
+                    line-height: 20px;
+                    background: transparent;
+                    svg {
+                        fill: #000;
+                    }
+                }
+            }
+        }
+    }
+}
+//?==== mobile menu css ends  ====?//
